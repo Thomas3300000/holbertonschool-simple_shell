@@ -34,7 +34,7 @@ tput setaf 2 # Définir la couleur en vert
 
 # Afficher le message approprié en fonction de ce qui a été ajouté
 echo "$added_message mis à jour sur ton GIT-HUB avec le commentaire:"
-echo " \"C - Simple Shell :$comment\""
+echo " \"C - Simple Shell: $comment\""
 
 # Rétablir la taille du texte et la couleur par défaut
 tput sgr0
