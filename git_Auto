@@ -1,0 +1,40 @@
+#!/bin/bash
+# Définition des séquences d'échappement ANSI pour les couleurs
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+#Pour le travail a plusieurs effectue un git pull pour evite les conflis 
+git pull
+#ajoute les droit d'execution a tout les utilisateur
+chmod -R u+x *
+# Demander à l'utilisateur s'il veut ajouter tous les fichiers ou spécifier un fichier
+echo "Voulez-vous ajouter tous les fichiers ? (O/n)"
+read choice
+
+if [ "$choice" = "n" ] || [ "$choice" = "N" ]; then
+	echo "Entrez le nom du fichier à ajouter :"
+	read filename
+	git add "$filename"
+	added_message="$filename a été"
+else
+	git add .
+	added_message="Tous les fichiers ont été"
+fi
+
+# Demander à l'utilisateur de saisir le commentaire du commit
+echo "Completez le commentaire de mise à jour du commit:C - Simple Shell :"
+read comment
+
+# Effectuer le commit et le push avec le commentaire spécifié
+git commit -m "C - Simple Shell : $comment"
+git push
+
+# Mets le texte en gras et change la couleur
+tput bold
+tput setaf 2 # Définir la couleur en vert
+
+# Afficher le message approprié en fonction de ce qui a été ajouté
+echo "$added_message mis à jour sur ton GIT-HUB avec le commentaire:"
+echo " \"C - Simple Shell :$comment\""
+
+# Rétablir la taille du texte et la couleur par défaut
+tput sgr0
