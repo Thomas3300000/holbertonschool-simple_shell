@@ -22,4 +22,5 @@
 char *lire_ligne(void);
 char **diviser_ligne(char *ligne, char *séparateurs);
 int commande_existe(char *commande);
+char **analyser_arguments(char *ligne, char *separateurs);
 #endif
