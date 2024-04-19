@@ -11,6 +11,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <cstdlib>
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>

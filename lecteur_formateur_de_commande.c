@@ -1,8 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <cstddef>
-#include <cstdlib>
-
 
 /**
  * lire_ligne - Lit une ligne depuis le terminal
