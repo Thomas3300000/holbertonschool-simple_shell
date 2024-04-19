@@ -1,7 +1,8 @@
 #include "main.h"
 
+
 /**
- * lire_ligne - Lit une ligne depuis l'entrée standard
+ * lire_ligne - Lit une ligne depuis le terminal
  * Retourne: la ligne lue depuis l'entrée standard
  */
 char *lire_ligne(void)
