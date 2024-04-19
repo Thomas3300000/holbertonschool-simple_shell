@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdlib.h>
+#include <cstddef>
+#include <cstdlib>
 
 
 /**
