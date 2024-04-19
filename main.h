@@ -4,8 +4,8 @@
 /* Variable globale */
 
 #define SÉPARATEURS_ARG " \t\r\n\a\""
-#define ENV_SÉPARATEUR "="
-#define PATH_SÉPARATEUR ":"
+#define SÉPARATEUR_ENV "="
+#define SÉPARATEUR_PATH ":"
 
 /* Librairies */
 
