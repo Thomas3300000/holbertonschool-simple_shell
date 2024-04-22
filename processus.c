@@ -1,38 +1,91 @@
 #include "main.h"
-
 /**
- * commande_existe - Fonction qui verifie si la commande existe
- * @commande: pointeur chaine de caracteres commande a verifier
+ * commande_existe - verifie si la commande exite dans le PATH
+ * @commande: commande a verifier
+ * @envp: variables d'environnement
  *
  * Return: 1 si la commande existe sinon 0
  */
-int commande_existe(char *commande)
+int commande_existe(char *commande, char **envp)
 {
-	if (access(commande, X_OK) == 0)
+	char **chemins = obtenir_dossiers_chemin(envp);
+	char *chemin_commande = obtenir_commande_tous_chemins(chemins, commande);
+
+	if (chemin_commande != NULL)
+	{
+		free(chemin_commande);
 		return (1);
-	fprintf(stderr, "Commande non trouvée\n");
+	}
+
+	free(chemins);
 	return (0);
 }
 
 /**
- * analyser_arguments - Fonction qui analyse chaque argument
- * @ligne: chaine de caracteres a analyser
- * @separateurs: chaine de caracteres contenant les separateurs
+ * execute_commande - execute la commande
+ * @commande: commande a executer
+ * @args: arguments de la commande
+ * @envp: variables d'environnement
  *
- * Return: mots
+ * Return: statut execution commande
  */
-char **analyser_arguments(char *ligne, char *separateurs)
+int execute_commande(char *commande, char **args, char **envp)
 {
-	char **mots = diviser_ligne(ligne, separateurs);
-	int i = 0;
+	if (commande_existe(commande, envp) == 0)
+	{
+		fprintf(stderr, "%s: Commande non trouvee\n", commande);
+		return (-1);
+	}
+	return (execute_process(args, envp));
+}
 
-	if (mots == NULL)
+/**
+  * analyser_args - analyse arguments pour executer commande
+  * @args: arguments a analyser
+  * @envp: variables d'environnement
+  *
+  * Return: status execution commande ou -1 si pas d'argument
+  */
+int analyser_args(char **args, char **envp)
+{
+	if (args[0] == NULL)
+	{
+		return (-1);
+	}
+	return (execute_commande(args[0], args, envp));
+}
+
+/**
+   * execute_process - execute processus avec arguments et environemment
+   * @args: argument processus
+   * @envp: variable environnement
+   *
+   * Return: statut execution processus
+   */
+int execute_process(char **args, char **envp)
+{
+	pid_t pid;
+	int status;
+
+	pid = fork();
+
+	if (pid < 0)
+	{
+		perror(".hsh");
 		exit(EXIT_FAILURE);
+	}
+	else if (pid == 0)
+	{
+		if (execve(args[0], args, envp) == -1)
+		{
+			perror("./hsh");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
+	}
 
-	while (mots[i] != NULL)
-		i++;
-
-	free(mots);
-
-	return (mots);
+	return (status);
 }
