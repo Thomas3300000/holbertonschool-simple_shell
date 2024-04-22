@@ -18,11 +18,11 @@ int obtenirLongueurTableau(char **tableau)
 }
 
 /**
- * cheminExiste - Vérifier si un chemin existe
+ * chemin_existe - Vérifier si un chemin existe
  * @chemin: Chemin à vérifier
  * Return: 1 si trouvé, 0 sinon
  */
-int cheminExiste(char *chemin)
+int chemin_existe(char *chemin)
 {
 	if (access(chemin, X_OK) == 0)
 		return (1);
@@ -30,13 +30,13 @@ int cheminExiste(char *chemin)
 }
 
 /**
- * obtenirDossiersChemin - Filtrer tous les dossiers
+ * obtenir_chemin_dossier - Filtrer tous les dossiers
  * à partir de la variable d'environnement PATH
  * @envp: Variables d'environnement
  * Return: Tableau de chaînes contenant
  * tous les chemins
  */
-char **obtenirDossiersChemin(char **envp)
+char **obtenir_chemin_dossier(char **envp)
 {
 	int i = 0;
 
@@ -65,13 +65,13 @@ char **obtenirDossiersChemin(char **envp)
 }
 
 /**
- * obtenirCheminCommande - Vérifier si une commande existe
+ * Obtenir_chemin_Commande - Vérifier si une commande existe
  * de manière récursive à partir d'un chemin
  * @cheminBase: Racine de la recherche
  * @nomCommande: Nom de la commande
  * Return: Chemin de la commande, ou NULL si non trouvé
  */
-char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
+char *Obtenir_chemin_Commande(char *cheminBase, char *nomCommande)
 {
 	char *chemin = malloc(sizeof(char) * 1024);
 	struct dirent *dp;
@@ -101,7 +101,7 @@ char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
 					return (chemin);
 				}
 			}
-			obtenirCheminCommande(chemin, nomCommande);
+			Obtenir_chemin_Commande(chemin, nomCommande);
 		}
 	}
 	closedir(dir);
@@ -110,19 +110,19 @@ char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
 }
 
 /**
- * obtenirCommandeTousChemins - Obtenir le chemin de la commande
+ * obtenir_tout_chemin_commande - Obtenir le chemin de la commande
  * en recherchant dans une liste de dossiers
  * @dossiers: Dossiers à rechercher
  * @nomCommande: nom de la commande
  * Return: Nom de la commande, ou NULL si non trouvé
  */
-char *obtenirCommandeTousChemins(char **dossiers, char *nomCommande)
+char *obtenir_tout_chemin_commande(char **dossiers, char *nomCommande)
 {
 	int i = 0;
 
 	while (dossiers[i])
 	{
-		char *chemin = obtenirCheminCommande(dossiers[i], nomCommande);
+		char *chemin = Obtenir_chemin_Commande(dossiers[i], nomCommande);
 
 		if (chemin != NULL)
 			return (chemin);

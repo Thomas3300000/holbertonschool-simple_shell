@@ -25,8 +25,8 @@ char **diviser_chaine(char *ligne, char *separateurs);
 int executer_processus(char **args, char *filePath, int lineNumber,
 					   char **envp);
 int analyser_args(char **args, char *filePath, int lineNumber, char **envp);
-char **obtenir_dossiers_chemin(char **envp);
-char *obtenir_commande_chemin(char **folders, char *commandName);
+char **obtenir_chemin_dossier(char **envp);
+char *obtenir_tout_chemin_commande(char **folders, char *commandName);
 int chemin_existe(char *path);
 
 #endif
