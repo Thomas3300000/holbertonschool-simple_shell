@@ -18,14 +18,15 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-/*Prototypes */
+/* Prototypes */
 
 char *lire_ligne(void);
-char **diviser_ligne(char *ligne, char *separateurs);
-int commande_existe(char *commande);
-char **analyser_arguments(char *ligne, char *separateurs);
-void gerer_non_interactif(char *chemin_fichier);
-void gerer_interactif(char *chemin_fichier);
-int main(int argc, char **argv);
+char **diviser_chaine(char *ligne, char *separateurs);
+int executer_processus(char **args, char *filePath, int lineNumber,
+					   char **envp);
+int analyser_args(char **args, char *filePath, int lineNumber, char **envp);
+char **obtenir_dossiers_chemin(char **envp);
+char *obtenir_commande_chemin(char **folders, char *commandName);
+int chemin_existe(char *path);
 
 #endif

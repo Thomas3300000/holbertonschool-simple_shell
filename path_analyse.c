@@ -1,8 +1,11 @@
 #include "main.h"
+#include <dirent.h>
+#include <sys/stat.h>
 
 /**
- * obtenirLongueurTableau - obtenir la longueur d'un tableau de chaines
- * @tableau: Tableau de chaines
+ * obtenirLongueurTableau - obtenir la longueur d'un
+ * tableau de chaînes
+ * @tableau: Tableau de chaînes
  * Retourne: Longueur du tableau
  */
 int obtenirLongueurTableau(char **tableau)
@@ -27,10 +30,11 @@ int cheminExiste(char *chemin)
 }
 
 /**
- * obtenirDossiersChemin - Filtrer tous les
- * dossiers de la variable d'environnement PATH
+ * obtenirDossiersChemin - Filtrer tous les dossiers
+ * à partir de la variable d'environnement PATH
  * @envp: Variables d'environnement
- * Retourne: Tableau de chaines contenant tous les chemins
+ * Retourne: Tableau de chaînes contenant
+ * tous les chemins
  */
 char **obtenirDossiersChemin(char **envp)
 {
@@ -40,15 +44,16 @@ char **obtenirDossiersChemin(char **envp)
 	{
 		if (envp[i] != NULL)
 		{
-			char **arguments = diviser_ligne(ligne, ENV_SEPARATEUR);
-			int longueurArguments = obtenirLongueurTableau(arguments);
+			char *ligne = strdup(envp[i]);
+			char **args = diviser_chaine(ligne, ENV_SEPARATEUR);
+			int longueurArgs = obtenirLongueurTableau(args);
 
-			if (longueurArguments > 1 && strcmp(arguments[0], "PATH") == 0)
+			if (longueurArgs > 1 && strcmp(args[0], "PATH") == 0)
 			{
-				char **chemins = diviser_chaine(arguments[1], PATH_SEPARATEUR);
+				char **chemins = diviser_chaine(args[1], PATH_SEPARATEUR);
 				int longueurChemins = obtenirLongueurTableau(chemins);
 
-				free(arguments);
+				free(args);
 				if (longueurChemins > 0)
 					return (chemins);
 				return (NULL);
@@ -60,15 +65,15 @@ char **obtenirDossiersChemin(char **envp)
 }
 
 /**
- * obtenirCheminCommande - Vérifier si une
- * commande existe récursivement à partir d'un chemin
+ * obtenirCheminCommande - Vérifier si une commande existe
+ * de manière récursive à partir d'un chemin
  * @cheminBase: Racine de la recherche
  * @nomCommande: Nom de la commande
- * Retourne: Chemin de la commande, ou NULL si non trouvée
+ * Retourne: Chemin de la commande, ou NULL si non trouvé
  */
 char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
 {
-	char *chemin = malloc(sizeof(char) * INPUT_MAX_LONGUEUR);
+	char *chemin = malloc(sizeof(char) * 1024);
 	struct dirent *dp;
 	DIR *dir = opendir(cheminBase);
 
@@ -105,11 +110,11 @@ char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
 }
 
 /**
- * obtenirCommandeTousChemins - Obtenir le chemin de
- * la commande en cherchant dans une liste de dossiers
- * @dossiers: Dossiers à chercher
- * @nomCommande: Nom de la commande
- * Retourne: Nom de la commande, ou NULL si non trouvée
+ * obtenirCommandeTousChemins - Obtenir le chemin de la commande
+ * en recherchant dans une liste de dossiers
+ * @dossiers: Dossiers à rechercher
+ * @nomCommande: nom de la commande
+ * Retourne: Nom de la commande, ou NULL si non trouvé
  */
 char *obtenirCommandeTousChemins(char **dossiers, char *nomCommande)
 {

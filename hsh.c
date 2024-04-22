@@ -5,7 +5,7 @@
   * @chemin_fichier: Chemin du programme
   * @envp: Variables d'environnement
 */
-void gerer_non_interactif(char *chemin_fichier)
+void gerer_non_interactif(char *chemin_fichier, char **envp)
 {
 	int fin_boucle = -1;
 	int numero_ligne = 0;
@@ -21,8 +21,8 @@ void gerer_non_interactif(char *chemin_fichier)
 			fin_boucle = 1;
 			break;
 		}
-		arguments = diviser_ligne(ligne, SEPARATEURS_ARG);
-		fin_boucle = analyser_arguments(ligne, chemin_fichier);
+		arguments = diviser_chaine(ligne, SEPARATEURS_ARG);
+		fin_boucle = analyser_args(arguments, chemin_fichier, numero_ligne, envp);
 		numero_ligne++;
 
 		free(ligne);
@@ -38,10 +38,10 @@ void gerer_non_interactif(char *chemin_fichier)
  * @chemin_fichier: Chemin du programme
  * @envp: Variables d'environnement
  */
-void gerer_interactif(char *chemin_fichier)
+void gerer_interactif(char *chemin_fichier, char **envp)
 {
 	char *ligne;
-	char *arguments;
+	char **arguments;
 	int statut = -1;
 	int numero_ligne = 0;
 
@@ -49,9 +49,9 @@ void gerer_interactif(char *chemin_fichier)
 	{
 		printf("($) ");
 		ligne = lire_ligne();
-		char *arguments = diviser_ligne(ligne, SEPARATEURS_ARG);
+		arguments = diviser_chaine(ligne, SEPARATEURS_ARG);
 		numero_ligne++;
-		statut = analyser_arguments(arguments, chemin_fichier);
+		statut = analyser_args(arguments, chemin_fichier, 0, envp);
 
 		free(ligne);
 		free(arguments);
@@ -73,8 +73,8 @@ int main(int argc, char **argv, char **envp)
 	if (argc < 1)
 		return (1);
 	if (isatty(STDIN_FILENO) == 1)
-		gerer_interactif(argv[0]);
+		gerer_interactif(argv[0], envp);
 	else
-		gerer_non_interactif(argv[0]);
+		gerer_non_interactif(argv[0], envp);
 	return (0);
 }

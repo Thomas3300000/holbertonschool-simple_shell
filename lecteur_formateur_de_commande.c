@@ -27,12 +27,12 @@ char *lire_ligne(void)
 }
 
 /**
- * diviser_ligne - Divise une ligne en utilisant des separateurs communs
+ * diviser_chaine - Divise une ligne en utilisant des separateurs communs
  * @ligne: La ligne à diviser
  * @separateurs: chaine de caractères utilisée pour séparer
  * Retourne: Tableau de chaines de caractères contenant un mot chacune
  */
-char **diviser_ligne(char *ligne, char *separateurs)
+char **diviser_chaine(char *ligne, char *separateurs)
 {
 	int taille_buffer = 64;
 	int i = 0;
