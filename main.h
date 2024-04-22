@@ -4,9 +4,9 @@
 /* Variable globale */
 
 #define INPUT_MAX_LONGUEUR 1000
-#define SÉPARATEURS_ARG " \t\r\n\a\""
-#define ENV_SÉPARATEUR "="
-#define PATH_SÉPARATEUR ":
+#define SEPARATEURS_ARG " \t\r\n\a\""
+#define ENV_SEPARATEUR "="
+#define PATH_SEPARATEUR ":"
 
 /* Librairies */
 
@@ -20,7 +20,7 @@
 /*Prototypes */
 
 char *lire_ligne(void);
-char **diviser_ligne(char *ligne, char *séparateurs);
+char **diviser_ligne(char *ligne, char *separateurs);
 int commande_existe(char *commande);
 char **analyser_arguments(char *ligne, char *separateurs);
 #endif

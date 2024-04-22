@@ -1,28 +1,29 @@
 #include "main.h"
 
 /**
- * commande_existe - Fonction qui verifie si la commande existe 
+ * commande_existe - Fonction qui verifie si la commande existe
  * @commande: pointeur chaine de caracteres commande a verifier
  *
  * Return: 1 si la commande existe sinon 0
  */
 int commande_existe(char *commande)
-{	 if (access(commande, X_OK) == 0)
+{
+	if (access(commande, X_OK) == 0)
 		return (1);
-	fprintf(stderr, "Commande non trouve©\n©");
+	fprintf(stderr, "Commande non trouvÃ©e\n");
 	return (0);
 }
 
 /**
  * analyser_arguments - Fonction qui analyse chaque argument
  * @ligne: chaine de caracteres a analyser
- * @seÃparateurs: chaine de caracteres contenant les separateurs  
+ * @separateurs: chaine de caracteres contenant les separateurs
  *
  * Return: mots
  */
-char **analyser_arguments(char *ligne, char *seÃparateurs)
+char **analyser_arguments(char *ligne, char *separateurs)
 {
-	char **mots = diviser_ligne(ligne, seÃparateurs);
+	char **mots = diviser_ligne(ligne, separateurs);
 	int i = 0;
 
 	if (mots == NULL)
