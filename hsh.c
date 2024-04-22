@@ -1,14 +1,14 @@
 #include "main.h"
 /**
-  * gérer_non_interactif - Gère le
+  * gerer_non_interactif - Gère le
   * processus non interactif de hsh
   * @chemin_fichier: Chemin du programme
   * @envp: Variables d'environnement
 */
-void gérer_non_interactif(char *chemin_fichier, char **envp)
+void gerer_non_interactif(char *chemin_fichier)
 {
 	int fin_boucle = -1;
-	int numéro_ligne = 0;
+	int numero_ligne = 0;
 
 	while (fin_boucle == -1)
 	{
@@ -21,9 +21,9 @@ void gérer_non_interactif(char *chemin_fichier, char **envp)
 			fin_boucle = 1;
 			break;
 		}
-		arguments = diviser_ligne(ligne, SÉPARATEURS_ARG);
-		fin_boucle = analyser_arguments(arguments, chemin_fichier, numéro_ligne, envp);
-		numéro_ligne++;
+		arguments = diviser_ligne(ligne, SEPARATEURS_ARG);
+		fin_boucle = analyser_arguments(ligne, chemin_fichier);
+		numero_ligne++;
 
 		free(ligne);
 		free(arguments);
@@ -33,25 +33,25 @@ void gérer_non_interactif(char *chemin_fichier, char **envp)
 }
 
 /**
- * gérer_interactif - Gère le
+ * gerer_interactif - Gère le
  * processus interactif de hsh
  * @chemin_fichier: Chemin du programme
  * @envp: Variables d'environnement
  */
-void gérer_interactif(char *chemin_fichier, char **envp)
+void gerer_interactif(char *chemin_fichier)
 {
 	char *ligne;
-	char **arguments;
+	char *arguments;
 	int statut = -1;
-	int numéro_ligne = 0;
+	int numero_ligne = 0;
 
 	do
 	{
 		printf("($) ");
 		ligne = lire_ligne();
-		arguments = diviser_ligne(ligne, SÉPARATEURS_ARG);
-		numéro_ligne++;
-		statut = analyser_arguments(arguments, chemin_fichier, numéro_ligne, envp);
+		char *arguments = diviser_ligne(ligne, SEPARATEURS_ARG);
+		numero_ligne++;
+		statut = analyser_arguments(arguments, chemin_fichier);
 
 		free(ligne);
 		free(arguments);
@@ -73,8 +73,8 @@ int main(int argc, char **argv, char **envp)
 	if (argc < 1)
 		return (1);
 	if (isatty(STDIN_FILENO) == 1)
-		gérer_interactif(argv[0], envp);
+		gerer_interactif(argv[0]);
 	else
-		gérer_non_interactif(argv[0], envp);
+		gerer_non_interactif(argv[0]);
 	return (0);
 }
