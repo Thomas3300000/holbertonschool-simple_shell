@@ -1,10 +1,10 @@
 #include "main.h"
 /**
-  * gerer_non_interactif - Gère le
-  * processus non interactif de hsh
-  * @chemin_fichier: Chemin du programme
-  * @envp: Variables d'environnement
-*/
+ * gerer_non_interactif - Gère le
+ * processus non interactif de hsh
+ * @chemin_fichier: Chemin du programme
+ * @envp: Variables d'environnement
+ */
 void gerer_non_interactif(char *chemin_fichier, char **envp)
 {
 	int fin_boucle = -1;
@@ -45,9 +45,8 @@ void gerer_interactif(char *chemin_fichier, char **envp)
 	int statut = -1;
 	int numero_ligne = 0;
 
-	do
-	{
-		printf("($) ");
+	do {
+		printf("($)\n");
 		ligne = lire_ligne();
 		arguments = diviser_chaine(ligne, SEPARATEURS_ARG);
 		numero_ligne++;
@@ -65,7 +64,7 @@ void gerer_interactif(char *chemin_fichier, char **envp)
  * @argc: Nombre d'arguments
  * @argv: Valeurs des arguments
  * @envp: Variables d'environnement
- * Retourne: Toujours 0
+ * Return: Toujours 0
  */
 int main(int argc, char **argv, char **envp)
 

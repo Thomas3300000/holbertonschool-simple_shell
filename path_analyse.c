@@ -6,7 +6,7 @@
  * obtenirLongueurTableau - obtenir la longueur d'un
  * tableau de chaînes
  * @tableau: Tableau de chaînes
- * Retourne: Longueur du tableau
+ * Return: Longueur du tableau
  */
 int obtenirLongueurTableau(char **tableau)
 {
@@ -20,7 +20,7 @@ int obtenirLongueurTableau(char **tableau)
 /**
  * cheminExiste - Vérifier si un chemin existe
  * @chemin: Chemin à vérifier
- * Retourne: 1 si trouvé, 0 sinon
+ * Return: 1 si trouvé, 0 sinon
  */
 int cheminExiste(char *chemin)
 {
@@ -33,7 +33,7 @@ int cheminExiste(char *chemin)
  * obtenirDossiersChemin - Filtrer tous les dossiers
  * à partir de la variable d'environnement PATH
  * @envp: Variables d'environnement
- * Retourne: Tableau de chaînes contenant
+ * Return: Tableau de chaînes contenant
  * tous les chemins
  */
 char **obtenirDossiersChemin(char **envp)
@@ -69,7 +69,7 @@ char **obtenirDossiersChemin(char **envp)
  * de manière récursive à partir d'un chemin
  * @cheminBase: Racine de la recherche
  * @nomCommande: Nom de la commande
- * Retourne: Chemin de la commande, ou NULL si non trouvé
+ * Return: Chemin de la commande, ou NULL si non trouvé
  */
 char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
 {
@@ -114,7 +114,7 @@ char *obtenirCheminCommande(char *cheminBase, char *nomCommande)
  * en recherchant dans une liste de dossiers
  * @dossiers: Dossiers à rechercher
  * @nomCommande: nom de la commande
- * Retourne: Nom de la commande, ou NULL si non trouvé
+ * Return: Nom de la commande, ou NULL si non trouvé
  */
 char *obtenirCommandeTousChemins(char **dossiers, char *nomCommande)
 {

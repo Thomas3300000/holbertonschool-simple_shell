@@ -2,7 +2,7 @@
 
 /**
  * lire_ligne - Lit une ligne depuis le terminal
- * Retourne: la ligne lue depuis l'entrée standard
+ * Return: la ligne lue depuis l'entrée standard
  */
 char *lire_ligne(void)
 {
@@ -30,7 +30,7 @@ char *lire_ligne(void)
  * diviser_chaine - Divise une ligne en utilisant des separateurs communs
  * @ligne: La ligne à diviser
  * @separateurs: chaine de caractères utilisée pour séparer
- * Retourne: Tableau de chaines de caractères contenant un mot chacune
+ * Return: Tableau de chaines de caractères contenant un mot chacune
  */
 char **diviser_chaine(char *ligne, char *separateurs)
 {
