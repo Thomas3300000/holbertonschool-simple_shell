@@ -22,11 +22,12 @@
 
 char *lire_ligne(void);
 char **diviser_chaine(char *ligne, char *separateurs);
-int executer_processus(char **args, char *filePath, int lineNumber,
+int executer_processus(char **args, char *chemin_fichier, int num_ligne,
 					   char **envp);
-int analyser_args(char **args, char *filePath, int lineNumber, char **envp);
+int analyser_args(char **args, char *chemin_fichier, int num_ligne,
+				  char **envp);
 char **obtenir_chemin_dossier(char **envp);
-char *obtenir_tout_chemin_commande(char **folders, char *commandName);
-int chemin_existe(char *path);
+char *obtenir_tout_chemin_commande(char **dossiers, char *nom_commande);
+int chemin_existe(char *chemin);
 
 #endif

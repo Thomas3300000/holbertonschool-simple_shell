@@ -65,17 +65,17 @@ char **obtenir_chemin_dossier(char **envp)
 }
 
 /**
- * Obtenir_chemin_Commande - Vérifier si une commande existe
+ * obtenir_chemin_commande - Vérifier si une commande existe
  * de manière récursive à partir d'un chemin
- * @cheminBase: Racine de la recherche
- * @nomCommande: Nom de la commande
+ * @chemin_base: Racine de la recherche
+ * @nom_commande: Nom de la commande
  * Return: Chemin de la commande, ou NULL si non trouvé
  */
-char *Obtenir_chemin_Commande(char *cheminBase, char *nomCommande)
+char *obtenir_chemin_commande(char *chemin_base, char *nom_commande)
 {
 	char *chemin = malloc(sizeof(char) * 1024);
 	struct dirent *dp;
-	DIR *dir = opendir(cheminBase);
+	DIR *dir = opendir(chemin_base);
 
 	if (!dir)
 	{
@@ -90,18 +90,18 @@ char *Obtenir_chemin_Commande(char *cheminBase, char *nomCommande)
 		{
 			struct stat sb;
 
-			strcpy(chemin, cheminBase);
+			strcpy(chemin, chemin_base);
 			strcat(chemin, "/");
 			strcat(chemin, dp->d_name);
 			if (stat(chemin, &sb) == 0 && sb.st_mode & S_IXUSR)
 			{
-				if (strcmp(nomCommande, dp->d_name) == 0)
+				if (strcmp(nom_commande, dp->d_name) == 0)
 				{
 					closedir(dir);
 					return (chemin);
 				}
 			}
-			Obtenir_chemin_Commande(chemin, nomCommande);
+			obtenir_chemin_commande(chemin, nom_commande);
 		}
 	}
 	closedir(dir);
@@ -113,16 +113,16 @@ char *Obtenir_chemin_Commande(char *cheminBase, char *nomCommande)
  * obtenir_tout_chemin_commande - Obtenir le chemin de la commande
  * en recherchant dans une liste de dossiers
  * @dossiers: Dossiers à rechercher
- * @nomCommande: nom de la commande
+ * @nom_commande: nom de la commande
  * Return: Nom de la commande, ou NULL si non trouvé
  */
-char *obtenir_tout_chemin_commande(char **dossiers, char *nomCommande)
+char *obtenir_tout_chemin_commande(char **dossiers, char *nom_commande)
 {
 	int i = 0;
 
 	while (dossiers[i])
 	{
-		char *chemin = Obtenir_chemin_Commande(dossiers[i], nomCommande);
+		char *chemin = obtenir_chemin_commande(dossiers[i], nom_commande);
 
 		if (chemin != NULL)
 			return (chemin);

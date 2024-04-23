@@ -6,14 +6,14 @@
  * commande_existe - Vérifie si une commande existe
  * @args: Arguments du script
  * @chemin_fichier: nom du chemin du fichier script
- * @numLigne: Numéro de la ligne du script à executer
+ * @num_ligne: Numéro de la ligne du script à executer
  * @envp: Variables d'environnement
  * Return: Chemin de la commande, ou NULL si elle n'existe pas
  */
 char *commande_existe(
 	char **args,
 	char *chemin_fichier,
-	int numLigne,
+	int num_ligne,
 	char **envp)
 {
 	char *chemin_Commande;
@@ -27,7 +27,7 @@ char *commande_existe(
 		if (chemin_Commande == NULL)
 		{
 			printf("%s: %d: Aucun fichier ou dossier de ce type\n", chemin_fichier,
-				   numLigne);
+				   num_ligne);
 			free(chemin_Commande);
 			return (NULL);
 		}
@@ -42,18 +42,18 @@ char *commande_existe(
  * executer_processus - Exécute un processus à partir des arguments
  * @args: Ligne de commande
  * @chemin_fichier: nom du chemin du fichier script
- * @numLigne: Numéro de la ligne du script à executer
+ * @num_ligne: Numéro de la ligne du script à executer
  * @envp: Variable d'environnement
  * Return: Statut du résultat du processus
  */
-int executer_processus(char **args, char *chemin_fichier, int numLigne,
+int executer_processus(char **args, char *chemin_fichier, int num_ligne,
 					   char **envp)
 {
 
 	pid_t pid;
 	int statut;
 	char *message = malloc(64 * sizeof(char));
-	char *chemin_Commande = commande_existe(args, chemin_fichier, numLigne, envp);
+	char *chemin_Commande = commande_existe(args, chemin_fichier, num_ligne, envp);
 
 	if (chemin_Commande == NULL)
 	{
@@ -66,7 +66,7 @@ int executer_processus(char **args, char *chemin_fichier, int numLigne,
 	{
 		if (execve(chemin_Commande, args, envp) == -1)
 		{
-			sprintf(message, "%s: %d", chemin_fichier, numLigne);
+			sprintf(message, "%s: %d", chemin_fichier, num_ligne);
 			perror(message);
 		}
 		free(message);
@@ -75,7 +75,7 @@ int executer_processus(char **args, char *chemin_fichier, int numLigne,
 	}
 	else if (pid < 0)
 	{
-		sprintf(message, "%s: %d", chemin_fichier, numLigne);
+		sprintf(message, "%s: %d", chemin_fichier, num_ligne);
 		perror(message);
 	}
 	else
@@ -94,13 +94,13 @@ int executer_processus(char **args, char *chemin_fichier, int numLigne,
  * analyser_args - Analyse les arguments pour executer un processus
  * @args: Arguments
  * @chemin_fichier: Chemin de l'exécutable
- * @numLigne: Numéro de la ligne du script
+ * @num_ligne: Numéro de la ligne du script
  * @envp: Variables d'environnement
  * Return: Statut de l'exécution du processus
  */
-int analyser_args(char **args, char *chemin_fichier, int numLigne, char **envp)
+int analyser_args(char **args, char *chemin_fichier, int num_ligne, char **envp)
 {
 	if (args[0] == NULL)
 		return (-1);
-	return (executer_processus(args, chemin_fichier, numLigne, envp));
+	return (executer_processus(args, chemin_fichier, num_ligne, envp));
 }
