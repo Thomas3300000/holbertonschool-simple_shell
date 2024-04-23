@@ -25,6 +25,12 @@ char *lire_ligne(void)
 	}
 	return (ligne);
 }
+/**
+ * diviser_chaine - Divise une ligne en utilisant des separateurs communs
+ * @ligne: La ligne à diviser
+ * @separateurs: chaine de caractères utilisée pour séparer
+ * Return: Tableau de chaines de caractères contenant un mot chacune
+ */
 
 char **diviser_chaine(char *ligne, char *separateurs)
 {
