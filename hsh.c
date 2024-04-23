@@ -45,8 +45,9 @@ void gerer_interactif(char *chemin_fichier, char **envp)
 	int statut = -1;
 	int numero_ligne = 0;
 
-	do {
-		printf("($)\n");
+	do
+	{
+		printf("($)");
 		ligne = lire_ligne();
 		arguments = diviser_chaine(ligne, SEPARATEURS_ARG);
 		numero_ligne++;

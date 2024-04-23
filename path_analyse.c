@@ -3,12 +3,12 @@
 #include <sys/stat.h>
 
 /**
- * obtenirLongueurTableau - obtenir la longueur d'un
+ * obtenir_longueur_tableau - obtenir la longueur d'un
  * tableau de chaînes
  * @tableau: Tableau de chaînes
  * Return: Longueur du tableau
  */
-int obtenirLongueurTableau(char **tableau)
+int obtenir_longueur_tableau(char **tableau)
 {
 	int i = 0;
 
@@ -46,12 +46,12 @@ char **obtenir_chemin_dossier(char **envp)
 		{
 			char *ligne = strdup(envp[i]);
 			char **args = diviser_chaine(ligne, ENV_SEPARATEUR);
-			int longueurArgs = obtenirLongueurTableau(args);
+			int longueurArgs = obtenir_longueur_tableau(args);
 
 			if (longueurArgs > 1 && strcmp(args[0], "PATH") == 0)
 			{
 				char **chemins = diviser_chaine(args[1], PATH_SEPARATEUR);
-				int longueurChemins = obtenirLongueurTableau(chemins);
+				int longueurChemins = obtenir_longueur_tableau(chemins);
 
 				free(args);
 				if (longueurChemins > 0)

@@ -26,12 +26,6 @@ char *lire_ligne(void)
 	return (ligne);
 }
 
-/**
- * diviser_chaine - Divise une ligne en utilisant des separateurs communs
- * @ligne: La ligne à diviser
- * @separateurs: chaine de caractères utilisée pour séparer
- * Return: Tableau de chaines de caractères contenant un mot chacune
- */
 char **diviser_chaine(char *ligne, char *separateurs)
 {
 	int taille_buffer = 64;
@@ -44,6 +38,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		fprintf(stderr, "erreur d'allocation : mots\n");
 		exit(EXIT_FAILURE);
 	}
+
 	mot = strtok(ligne, separateurs);
 	while (mot != NULL)
 	{
@@ -64,5 +59,6 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		mot = strtok(NULL, separateurs);
 	}
 	mots[i] = NULL;
+	mots = realloc(mots, (i + 1) * sizeof(char *));
 	return (mots);
 }
