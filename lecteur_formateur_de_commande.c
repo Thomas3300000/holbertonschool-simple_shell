@@ -32,10 +32,10 @@ char *lire_ligne(void)
  * @separateurs: chaine de caractères utilisée pour séparer
  * Return: Tableau de chaines de caractères contenant un mot chacune
  */
+
 char **diviser_chaine(char *ligne, char *separateurs)
 {
-	int taille_buffer = 64;
-	int i = 0;
+	int taille_buffer = 64, i = 0, j;
 	char **mots = malloc(taille_buffer * sizeof(char *));
 	char *mot;
 
@@ -44,7 +44,6 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		fprintf(stderr, "erreur d'allocation : mots\n");
 		exit(EXIT_FAILURE);
 	}
-
 	mot = strtok(ligne, separateurs);
 	while (mot != NULL)
 	{
@@ -57,12 +56,11 @@ char **diviser_chaine(char *ligne, char *separateurs)
 			fprintf(stderr, "erreur d'allocation pour le mot\n");
 			exit(EXIT_FAILURE);
 		}
-
-			strcpy(mots[i], mot);
-			i++;
+		strcpy(mots[i], mot);
+		i++;
 		if (i >= taille_buffer)
 		{
-			
+
 			taille_buffer += 64;
 			mots = realloc(mots, taille_buffer * sizeof(char *));
 			if (!mots)
@@ -74,5 +72,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		mot = strtok(NULL, separateurs);
 	}
 	mots[i] = NULL;
+	for (j = 0; j < i; j++)
+		free(mots[j]);
 	return (mots);
 }

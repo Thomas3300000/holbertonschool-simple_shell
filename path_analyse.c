@@ -61,9 +61,12 @@ char **obtenir_dossiers_chemin(char **envp)
 				}
 				return (chemins);
 			}
+			free(args);
+			free(ligne);
 		}
 		i++;
 	}
+
 	return (NULL);
 }
 
@@ -122,6 +125,11 @@ char *obtenir_commande_chemin(char *cheminBase, char *nomCommande)
 char *obtenir_commande_tous_chemins(char **dossiers, char *nomCommande)
 {
 	int i = 0;
+
+	if (dossiers == NULL || nomCommande == NULL)
+	{
+		return (NULL);
+	}
 
 	while (dossiers[i])
 	{

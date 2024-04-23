@@ -11,9 +11,15 @@ int commande_existe(char *commande, char **envp)
 	char **chemins = obtenir_dossiers_chemin(envp);
 	char *chemin_commande = obtenir_commande_tous_chemins(chemins, commande);
 
+	if (chemins == NULL)
+	{
+		return (0);
+	}
+
 	if (chemin_commande != NULL)
 	{
 		free(chemin_commande);
+		free(chemins);
 		return (1);
 	}
 
