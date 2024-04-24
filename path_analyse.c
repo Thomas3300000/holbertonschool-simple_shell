@@ -1,6 +1,4 @@
 #include "main.h"
-#include <dirent.h>
-#include <sys/stat.h>
 
 /**
  * obtenir_longueur_tableau - obtenir la longueur d'un
@@ -66,14 +64,13 @@ char **obtenir_chemin_dossier(char **envp)
 
 /**
  * obtenir_chemin_commande - Vérifier si une commande existe
- * de manière récursive à partir d'un chemin
  * @chemin_base: Racine de la recherche
  * @nom_commande: Nom de la commande
  * Return: Chemin de la commande, ou NULL si non trouvé
  */
 char *obtenir_chemin_commande(char *chemin_base, char *nom_commande)
 {
-	char *chemin = malloc(sizeof(char) * 1024);
+	char *chemin = malloc(sizeof(char) * INPUT_MAX_LONGUEUR);
 	struct dirent *dp;
 	DIR *dir = opendir(chemin_base);
 
@@ -101,7 +98,6 @@ char *obtenir_chemin_commande(char *chemin_base, char *nom_commande)
 					return (chemin);
 				}
 			}
-			obtenir_chemin_commande(chemin, nom_commande);
 		}
 	}
 	closedir(dir);

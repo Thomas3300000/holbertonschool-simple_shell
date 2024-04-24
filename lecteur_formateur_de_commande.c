@@ -13,6 +13,7 @@ char *lire_ligne(void)
 	{
 		if (feof(stdin))
 		{
+			printf("\n");
 			free(ligne);
 			exit(EXIT_SUCCESS);
 		}
@@ -24,6 +25,18 @@ char *lire_ligne(void)
 		}
 	}
 	return (ligne);
+}
+
+/**
+ * formatter_commande - Formate la commande saisie par l'utilisateur
+ * Return: la commande formatée
+ */
+char *formatter_commande(void)
+{
+	char *ligne = lire_ligne();
+	char *commande = strtok(ligne, SEPARATEURS_ARG);
+
+	return (commande);
 }
 /**
  * diviser_chaine - Divise une ligne en utilisant des separateurs communs

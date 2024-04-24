@@ -16,12 +16,14 @@ void gerer_non_interactif(char *chemin_fichier, char **envp)
 		char **arguments;
 
 		ligne = lire_ligne();
+
 		if (ligne == NULL)
 		{
 			fin_boucle = 1;
 			break;
 		}
 		arguments = diviser_chaine(ligne, SEPARATEURS_ARG);
+
 		fin_boucle = analyser_args(arguments, chemin_fichier, numero_ligne, envp);
 		numero_ligne++;
 
