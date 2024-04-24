@@ -49,4 +49,4 @@ hsh main.c shell.c test_ls_2
 
 ## Authors
 
-| [@Thomas Maillard](https://github.com/Thomas3300000)| [@Samuel VERSCHUEREN]https://github.com/Ezio-33) |
+| [@Thomas Maillard](https://github.com/Thomas3300000)| [@Samuel VERSCHUEREN](https://github.com/Ezio-33) |
