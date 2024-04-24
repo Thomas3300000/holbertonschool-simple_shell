@@ -49,7 +49,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 {
 	int taille_buffer = 64;
 	int i = 0;
-	char **mots = malloc(taille_buffer * sizeof(char *));
+	char **mots = (char **)malloc(taille_buffer * sizeof(char *));
 	char *mot;
 
 	if (!mots)
@@ -68,7 +68,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		if (i >= taille_buffer)
 		{
 			taille_buffer += taille_buffer;
-			mots = realloc(mots, taille_buffer * sizeof(char *));
+			mots = (char **)realloc(mots, taille_buffer * sizeof(char *));
 			if (!mots)
 			{
 				fprintf(stderr, "erreur de réallocation : mots");
@@ -78,6 +78,12 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		mot = strtok(NULL, separateurs);
 	}
 	mots[i] = NULL;
-	mots = realloc(mots, (i + 1) * sizeof(char *));
+	mots = (char **)realloc(mots, (i + 1) * sizeof(char *));
+	if (!mots)
+	{
+		fprintf(stderr, "erreur de réallocation : mots");
+		exit(EXIT_FAILURE);
+	}
 	return (mots);
 }
+
