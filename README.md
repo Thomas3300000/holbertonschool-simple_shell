@@ -1,4 +1,4 @@
-<h1 align="center">💻 Holberton-School Projet : Simple Shell</h1>
+<h1 align="center">Holberton-School Projet : Simple Shell</h1>
 </div>
 <br><br><br><br>
 
@@ -38,4 +38,4 @@ exemple bientot disponible
 
 ## Flowchart
 
-<img src="https://github.com/Thomas3300000/holbertonschool-simple_shell/tree/Samuel/Annexes/Flowchart.png?raw=true">
+<img src="https://github.com/Thomas3300000/holbertonschool-simple_shell/blob/Samuel/Annexes/Flowchart.png?raw=true">
