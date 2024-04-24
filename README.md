@@ -18,7 +18,7 @@ Le mode interactif :
 Le mode non interactif :
 
 ```
-cat script.sh | ./hsh
+$ echo "/bin/ls" | ./hsh
 ```
 
 ### Examples
@@ -26,16 +26,27 @@ cat script.sh | ./hsh
 1. Interactive mode
 
 ```
-exemple bientot disponible
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+
 ```
 
 2. Non-interactive mode
 
 ```
 
-exemple bientot disponible
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
 ```
 
 ## Flowchart
 
 <img src="https://github.com/Thomas3300000/holbertonschool-simple_shell/blob/Samuel/Annexes/Flowchart.png?raw=true">
+
+## Authors
+
+| [@Thomas Maillard](https://github.com/Thomas3300000)| [@Samuel VERSCHUEREN]https://github.com/Ezio-33) |
