@@ -7,6 +7,24 @@
 Pour ce projet appelé "Simple Shell", nous avions deux semaines pour le réaliser.
 L'objectif est de créer une commande `hsh`, nous permettant d'exécuter des scripts de différentes manières
 
+## instructions d'installation et de compilation
+
+### Installation
+
+Pour ajouter le projet dans votre environnement de travail, vous pouvez utiliser la commande suivante dans votre terminal:
+
+```
+git clone https://github.com/Thomas3300000/holbertonschool-simple_shell.git
+```
+
+### Compilation
+
+Pour compiler le programme, vous devez utiliser la commande suivante :
+
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
+
 ## Usage
 
 Le mode interactif :
@@ -45,7 +63,7 @@ hsh main.c shell.c test_ls_2
 
 ## Flowchart
 
-<img src="https://github.com/Thomas3300000/holbertonschool-simple_shell/blob/Samuel/Annexes/Flowchart.png?raw=true">
+<img src="https://github.com/Thomas3300000/holbertonschool-simple_shell/blob/main/Annexes/Flowchart.png?raw=true">
 
 ## Authors
 

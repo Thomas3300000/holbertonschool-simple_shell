@@ -51,7 +51,6 @@ char **obtenir_chemin_dossier(char **envp)
 				char **chemins = diviser_chaine(args[1], PATH_SEPARATEUR);
 				int longueurChemins = obtenir_longueur_tableau(chemins);
 
-				free(args);
 				if (longueurChemins > 0)
 					return (chemins);
 				return (NULL);

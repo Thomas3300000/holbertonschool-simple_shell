@@ -68,7 +68,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		mot = strtok(NULL, separateurs);
 	}
 	mots[i] = NULL;
-	mots = (char **)realloc(mots, (i + 1) * sizeof(char *));
+
 	if (!mots)
 	{
 		fprintf(stderr, "erreur de réallocation : mots");

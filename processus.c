@@ -56,6 +56,7 @@ int executer_processus(char **args, char *chemin_fichier, int num_ligne,
 
 	if (chemin_commande == NULL)
 	{
+		free(chemin_commande);
 		free(message);
 		return (-1);
 	}
@@ -76,11 +77,11 @@ int executer_processus(char **args, char *chemin_fichier, int num_ligne,
 	{
 		sprintf(message, "%s: %d", chemin_fichier, num_ligne);
 		perror(message);
+		free(message);
 	}
 	else
 	{
-		do
-		{
+		do {
 			waitpid(pid, &statut, WUNTRACED);
 		} while (!WIFEXITED(statut) && !WIFSIGNALED(statut));
 	}
