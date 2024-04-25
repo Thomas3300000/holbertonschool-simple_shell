@@ -1,5 +1,57 @@
-.TH hsh 1 "Mane for Holberton School" "User commands"
+.TH Simple Shell "25 April 2024" "1.0" "Simple Shell man page"
+
+.SH NAME
+.B hsh 
+   - Reproduce the shell with the basic commands
+
+.SH SYNOPSIS
+.B ./hsh [command] [options] [file]
+
+.SH DESCRIPTION
+
+.B Simple Shell is an end-of-term project for Holberton School.
+   We need to understand how a simple shell works and reproduce it so that it is functional with basic commands. 
+.B The simple shell is a simplified iteration of a command line interpreter
+
+.B Operates in interractive and non-interractive modes.
+.I Interractive mode: 
+.B The shell reads commands from the standard input and executes them.
+.I Non-interractive mode: 
+.B The shell reads commands from a file and executes them.
+
+.SH EXAMPLES
+   The following example demonstrates the usage of hsh:
+
+.I Interractive mode:
+-----------------------------------------------------------------------
+   root@example:~/holbertonschool-simple_shell# ./hsh
+   ($)ls
+   AUTHORS  Annexes  README.md  git_Auto  hsh  hsh.c  lecteur_formateur_de_commande.c  main.h  man_1_simple_shell  path_analyse.c  processus.c
+   ($)pwd
+   /root/holbertonschool-simple_shell
+   ($)exit
+   root@exemple:~/holbertonschool-simple_shell#
+-----------------------------------------------------------------------
+
+
+.I Non-interractive mode:
+-----------------------------------------------------------------------
+   root@examples:~/holbertonschool-simple_shell# echo "/bin/ls" | ./hsh
+   AUTHORS  Annexes  README.md  git_Auto  hsh  hsh.c  lecteur_formateur_de_commande.c  main.h  man_1_simple_shell  path_analyse.c  processus.c
+
+   root@example:~/holbertonschool-simple_shell# echo "/bin/cat AUTHORS" | ./hsh
+   #Ce fichier liste tous les individus ayant contribué:
+
+   Thomas Maillard <8844@holbertonstudents.com>
+   Samuel VERSCHUEREN <8691@holbertonstudents.com>
+
+   root@example:~/holbertonschool-simple_shell# 
+-----------------------------------------------------------------------
+
+.SH COPYTRIGHT
+   This version of Simple Shell was created by Samuel VERSCHUEREN and Thomas MAILLARD. 
+   The man page was written by Samuel VERSCHUEREN and Thomas MAILLARD. 
 
 .SH AUTHOR
-Thomas Maillard
-Samuel VERSCHUEREN 
+   Samuel VERSCHUEREN.
+   Thomas MAILLARD.
