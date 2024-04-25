@@ -20,45 +20,47 @@ Pour ce projet appelé "Simple Shell", nous avions deux semaines pour réaliser 
 
 ### Liste des fonctions et des appels système autorisés
 
-- Toutes les fonctions de string.h
-- access
-- chdir
-- close
-- closedir
-- execve
-- exit
-- \_exit
-- fflush
-- fork
-- free
-- getcwd
-- getline
-- getpid
-- isatty
-- kill
-- malloc
-- open
-- opendir
-- perror
-- printf
-- fprintf
-- vfprintf
-- sprintf
-- putchar
-- read
-- readdir
-- signal
-- stat
-- lstat
-- fstat
-- strtok
-- wait
-- waitpid
-- wait3
-- wait4
-- write
+| Fonctions et appels système autorisés |
+| ------------------------------------- |
+| Toutes les fonctions de string.h      |
+| access                                |
+| chdir                                 |
+| close                                 |
+| closedir                              |
+| execve                                |
+| exit                                  |
+| \_exit                                |
+| fflush                                |
+| fork                                  |
+| free                                  |
+| getcwd                                |
+| getline                               |
+| getpid                                |
+| isatty                                |
+| kill                                  |
+| malloc                                |
+| open                                  |
+| opendir                               |
+| perror                                |
+| printf                                |
+| fprintf                               |
+| vfprintf                              |
+| sprintf                               |
+| putchar                               |
+| read                                  |
+| readdir                               |
+| signal                                |
+| stat                                  |
+| lstat                                 |
+| fstat                                 |
+| strtok                                |
+| wait                                  |
+| waitpid                               |
+| wait3                                 |
+| wait4                                 |
+| write                                 |
 
-## instructions d'installation et de compilation
+## Instructions d'installation et de compilation
 
 ### Installation
 
