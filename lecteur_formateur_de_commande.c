@@ -19,6 +19,7 @@ char *lire_ligne(void)
 		else
 		{
 			printf("Erreur lors de la lecture de la ligne depuis l'entrée standard");
+			free(ligne);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -43,6 +44,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 	if (!mots)
 	{
 		fprintf(stderr, "erreur d'allocation : mots\n");
+		free(mots);
 		exit(EXIT_FAILURE);
 	}
 
@@ -60,6 +62,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 			if (!mots)
 			{
 				fprintf(stderr, "erreur de réallocation : mots");
+				free(mots);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -70,6 +73,7 @@ char **diviser_chaine(char *ligne, char *separateurs)
 	if (!mots)
 	{
 		fprintf(stderr, "erreur de réallocation : mots");
+		free(mots);
 		exit(EXIT_FAILURE);
 	}
 	return (mots);
