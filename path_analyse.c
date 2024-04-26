@@ -54,6 +54,7 @@ char **obtenir_chemin_dossier(char **envp)
 				if (longueurChemins > 0)
 					return (chemins);
 				return (NULL);
+				free(ligne);
 			}
 		}
 		i++;

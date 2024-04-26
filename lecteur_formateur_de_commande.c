@@ -23,7 +23,7 @@ char *lire_ligne(void)
 			exit(EXIT_FAILURE);
 		}
 	}
-	return ligne;
+	return (ligne);
 }
 
 
@@ -69,7 +69,6 @@ char **diviser_chaine(char *ligne, char *separateurs)
 		mot = strtok(NULL, separateurs);
 	}
 	mots[i] = NULL;
-
 	if (!mots)
 	{
 		fprintf(stderr, "erreur de réallocation : mots");
