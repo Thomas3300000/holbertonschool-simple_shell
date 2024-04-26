@@ -11,20 +11,18 @@ char *lire_ligne(void)
 
 	if (getline(&ligne, &taille_buffer, stdin) == -1)
 	{
-		if (feof(stdin))
+		if (ligne == NULL)
 		{
 			printf("\n");
-			free(ligne);
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
-			free(ligne);
 			printf("Erreur lors de la lecture de la ligne depuis l'entrée standard");
 			exit(EXIT_FAILURE);
 		}
 	}
-	return (ligne);
+	return ligne;
 }
 
 

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+MAN_FILE="man_1_simple_shell"
+
+if [ -f "$MAN_FILE" ];
+then
+    cat "$MAN_FILE"
+else
+    echo "Le fichier $MAN_FILE n'existe pas."
+fi
